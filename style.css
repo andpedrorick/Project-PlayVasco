@@ -1,0 +1,190 @@
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    overflow: hidden;
+}
+
+.slider {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.slides {
+    display: flex;
+    width: 400%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    width: 25%;
+    height: 100vh;
+}
+
+.slide img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.manual-navigation {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    bottom: 10px;
+    padding: 5px;
+}
+
+.manual-btn:hover,
+#radio1:checked ~ .manual-navigation .manual-btn:nth-child(1),
+#radio2:checked ~ .manual-navigation .manual-btn:nth-child(2),
+#radio3:checked ~ .manual-navigation .manual-btn:nth-child(3),
+#radio4:checked ~ .manual-navigation .manual-btn:nth-child(4) {
+    background-color: #ff0000;
+}
+
+.manual-btn {
+    border: 2px solid #fff;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.5s;
+    
+}
+
+.manual-btn:not(:last-child) {
+    margin-right: 40px;
+}
+
+.manual-btn:hover {
+    background-color: #fff;
+}
+
+#radio1:checked ~ .slides {
+    transform: translateX(0);
+}
+
+#radio2:checked ~ .slides {
+    transform: translateX(-25%);
+}
+
+#radio3:checked ~ .slides {
+    transform: translateX(-50%);
+}
+
+#radio4:checked ~ .slides {
+    transform: translateX(-75%);
+}
+
+#radio1:checked ~ .first {
+    margin-left: 0;
+}
+
+#radio2:checked ~ .first {
+    margin-left: -25%;
+}
+#radio3:checked ~ .first {
+    margin-left: -50%;
+}
+#radio4:checked ~ .first {
+    margin-left: -75%;
+}
+
+.text-container {
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    color: #fff;
+    z-index: 1; /* Garante que o texto fique acima da sobreposição */
+}
+
+.text-container::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: -10px;
+    width: calc(100% + 20px);
+    height: calc(100% + 20px);
+    background: rgba(0, 0, 0, 0.5); /* Fundo preto com 50% de opacidade */
+    z-index: -1; /* Coloca a sobreposição atrás do texto */
+    border-radius: 20px; /* Arredonda os cantos da sobreposição */
+}
+
+.text-container h2 {
+    font-family: "Londrina Shadow", sans-serif;
+    font-size: 55px;
+    margin: 10px 0 0;
+    color: transparent; /* Necessário para exibir o gradiente de fundo */
+    background-image: linear-gradient(to right, rgb(255, 0, 0), rgb(0, 0, 0));
+    -webkit-background-clip: text; /* Suporte para navegadores baseados em WebKit */
+    background-clip: text;
+    top: 20px;
+}
+
+.text-container p {
+    font-size: 1.2em; /* Ajuste o tamanho conforme necessário */
+    font-family: "Inter", sans-serif;
+    color: #ffffff; /* Altere a cor do texto */
+    margin: 10px 0 0;
+    top: 20px;
+}
+.video-container {
+    position: absolute;
+    bottom: 20px; /* Mantenha a distância da parte inferior da tela */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translateX(calc(55% + 35px)) translateY(-60%); /* Move para a direita e para cima */
+    z-index: 1; /* Garante que o vídeo fique acima da sobreposição */
+ 
+    padding: 10px; /* Adiciona algum espaço interno se necessário */
+}
+
+
+#slider-video {
+    display: block;
+    border: 3px solid #ff0000; /* Adiciona uma borda vermelha ao vídeo */
+    border-radius: 10px;
+    height: auto; /* Ajusta a altura do vídeo conforme necessário */
+}
+#play-button {
+    background-color: transparent; /* Remove o fundo vermelho */
+    border: none;
+    color: #ff0000; /* Define a cor do ícone */
+    padding: 10px;
+    font-size: 24px; /* Ajusta o tamanho do ícone */
+    cursor: pointer;
+    display: flex; /* Alinha o ícone e o texto horizontalmente */
+    align-items: center; /* Alinha verticalmente o ícone e o texto */
+}
+
+#play-button i {
+    font-size: 36px; /* Tamanho do ícone */
+    margin-right: 10px; /* Espaço entre o ícone e o texto */
+}
+
+
+.logo {
+    position: absolute;
+    margin: 20px;
+    top: 0;
+    left: 0;
+    z-index: 10; /* Certifique-se de que a logo esteja acima das imagens */
+}
+
+.logo img {
+    width: 120px; /* Ajuste conforme necessário */
+    height: auto;
+    
+}
